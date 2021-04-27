@@ -9,13 +9,13 @@ import Foundation
 
 class Helpers{
     
-    static var isFirstTime = false;
+//    static var isFirstTime = false;
     
     static func isContiguous(_ grid: [[String]]) -> Bool {
-        if(!isFirstTime){
-            isFirstTime = true
-            return true
-        }
+//        if(!isFirstTime){
+//            isFirstTime = true
+//            return true
+//        }
         var result = 0
         var notGrid = grid.map({ $0.map({ $0 == "" ? "0" : "1" }) })
         for row in 0..<grid.count {
@@ -26,7 +26,6 @@ class Helpers{
                 }
             }
         }
-        print("islands: \(result)")
         return result == 1
     }
 

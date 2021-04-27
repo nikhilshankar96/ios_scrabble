@@ -7,6 +7,13 @@
 
 import Foundation
 
+// ## To do list ##
+
+// check if new placement is a word in all possible directions
+// check if new placed characters are all in one row/col
+
+// ## ##
+
 class GameConstants{
     static let gridSize = 15;
     static let alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
@@ -40,25 +47,36 @@ class GameConstants{
         "Y": 4,
         "Z": 10
     ]
+//    Scores
+//    0 Points - Blank tile.
+//    1 Point - A, E, I, L, N, O, R, S, T and U.
+//    2 Points - D and G.
+//    3 Points - B, C, M and P.
+//    4 Points - F, H, V, W and Y.
+//    5 Points - K.
+//    8 Points - J and X.
+//    10 Points - Q and Z.
     
     static func getNewCharacter() -> String{
         var charPool = [String]();
         alphabet.map({ charPool.append(contentsOf: Array(repeating: $0,count:( 13 - scoreMap[$0]!)) )})
         charPool.shuffle()
-        print(charPool, charPool.count)
-        
         let r = charPool[Int.random(in: 0..<charPool.count-1)]
         print("random: \(r)")
         return r
     }
     
     static func calcWordScore(word: String) -> Int{
-        var score = 1;
+        var score = 0;
         let arr = word.uppercased().map { String($0) }
         for a in arr {
             score += (scoreMap[a]!)
         }
         print(word, score)
         return score;
+    }
+    
+    static func getNewSet() -> [String]{
+        return [getNewCharacter(), getNewCharacter(), getNewCharacter(), getNewCharacter(), getNewCharacter(), getNewCharacter(), getNewCharacter(), getNewCharacter(), getNewCharacter()]
     }
 }
