@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		155CFAC726379FE60087A4AF /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155CFAC626379FE60087A4AF /* GameState.swift */; };
+		155CFACA2637A02F0087A4AF /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155CFAC92637A02F0087A4AF /* GameConstants.swift */; };
+		155CFACD2637A1030087A4AF /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155CFACC2637A1030087A4AF /* Helpers.swift */; };
 		155D80CA263779EA003BF481 /* ScrabbleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155D80C9263779EA003BF481 /* ScrabbleApp.swift */; };
 		155D80CC263779EA003BF481 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155D80CB263779EA003BF481 /* ContentView.swift */; };
 		155D80CE263779EC003BF481 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 155D80CD263779EC003BF481 /* Assets.xcassets */; };
@@ -14,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		155CFAC626379FE60087A4AF /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		155CFAC92637A02F0087A4AF /* GameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConstants.swift; sourceTree = "<group>"; };
+		155CFACC2637A1030087A4AF /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		155D80C6263779EA003BF481 /* Scrabble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrabble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		155D80C9263779EA003BF481 /* ScrabbleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrabbleApp.swift; sourceTree = "<group>"; };
 		155D80CB263779EA003BF481 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +63,9 @@
 				155D80CD263779EC003BF481 /* Assets.xcassets */,
 				155D80D2263779EC003BF481 /* Info.plist */,
 				155D80CF263779EC003BF481 /* Preview Content */,
+				155CFAC626379FE60087A4AF /* GameState.swift */,
+				155CFAC92637A02F0087A4AF /* GameConstants.swift */,
+				155CFACC2637A1030087A4AF /* Helpers.swift */,
 			);
 			path = Scrabble;
 			sourceTree = "<group>";
@@ -138,7 +147,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				155CFAC726379FE60087A4AF /* GameState.swift in Sources */,
+				155CFACA2637A02F0087A4AF /* GameConstants.swift in Sources */,
 				155D80CC263779EA003BF481 /* ContentView.swift in Sources */,
+				155CFACD2637A1030087A4AF /* Helpers.swift in Sources */,
 				155D80CA263779EA003BF481 /* ScrabbleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,7 +289,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nps.Scrabble;
+				PRODUCT_BUNDLE_IDENTIFIER = nps.scrabble.002;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -299,7 +311,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nps.Scrabble;
+				PRODUCT_BUNDLE_IDENTIFIER = nps.scrabble.002;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
