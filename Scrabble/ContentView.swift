@@ -27,6 +27,10 @@ struct ContentView: View {
                                     matrix[i][j] = selectedAlphabet
                                     selectedAlphabet = ""
                                     
+                                    //
+                                    GameConstants.calcWordScore(word: "Nikhil")
+                                    //
+                                    
                                     if(Helpers.isContiguous(matrix)){
                                         print("Still one island, commiting change")
                                     } else {
