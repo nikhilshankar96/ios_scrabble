@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-let gridSize = GameConstants.gridSize
-let alphabet = GameConstants.alphabet
+let gridSize = Logic.gridSize
+let alphabet = Logic.alphabet
 struct ContentView: View {
-    @State var matrix = GameConstants.matrix
-    @State var prevMatrix = GameConstants.matrix
-    @State var pieceSet = GameConstants.getNewSet()
+    @State var matrix = Logic.matrix
+    @State var prevMatrix = Logic.matrix
+    @State var pieceSet = Logic.getNewSet()
     @State var selectedAlphabet = ""
     @State var currentWord = ""
     @State var score = 0
@@ -41,7 +41,7 @@ struct ContentView: View {
                                     matrix[i][j] = selectedAlphabet
                                     
                                     //check if new char is part of the existing logic
-                                    if(!Helpers.isContiguous(matrix)){
+                                    if(!Logic.isContiguous(matrix)){
                                         print("Not one island, reverting")
                                         matrix[i][j] = ""
                                         selectedAlphabet = ""
@@ -51,7 +51,6 @@ struct ContentView: View {
                                             pieceSet.remove(at: i)
                                             break
                                         }
-                                        print(currentWord)
                                         selectedAlphabet = ""
                                     }
 
@@ -81,7 +80,7 @@ struct ContentView: View {
                     Text(a)
                 }
                 .buttonStyle(PieceStyle())
-                .foregroundColor(selectedAlphabet == a ? Color.white :colorMap[GameConstants.scoreMap[a]!])
+                .foregroundColor(selectedAlphabet == a ? Color.white :colorMap[Logic.scoreMap[a]!])
                 .background(selectedAlphabet == a ? Color.black : Color.white)
             }
         }
@@ -98,47 +97,104 @@ struct ContentView: View {
         Spacer().frame(height: 20);
         
         // Buttons
-        HStack(spacing: 10){
+        HStack(spacing: 20){
             Button(
                 action: {
                     //action
                     matrix = prevMatrix
+                    for i in currentWord{
+                        pieceSet.append(String(i))
+                    }
                     currentWord = ""
                     selectedAlphabet = ""
                 }){
-                Text("Cancel")
+                Image(systemName: "xmark")
             }
             .padding()
-            .background(Color(red: 0.8, green: 0.1, blue: 0.1))
+            .background(Color(red: 0.6, green: 0.6, blue: 0.6))
             .foregroundColor(.white)
             .clipShape(Capsule())
             
-            Spacer()
-                    .frame(width: 50)
+            Button(
+                action: {
+                    //action
+                    if pieceSet.count > 1 {
+                        pieceSet.shuffle()
+                    }
+                }){
+                Image(systemName: "shuffle")
+            }
+            .padding()
+            .background(Color(red: 0.2, green: 0.8, blue: 0.8))
+            .foregroundColor(.white)
+            .clipShape(Capsule())
             
             Button(
                 action: {
+                    //action
+                    if(reserveCount == 0 && pieceSet.count != 0){
+                        var count = pieceSet.count - 1
+                        for _ in currentWord{
+                            count += 1
+                        }
+                        pieceSet = []
+                        
+                        while count > 0 {
+                            pieceSet.append(Logic.getNewCharacter())
+                            count -= 1
+                        }
+                        score -= 5
+                    } else if( reserveCount > 0 && (pieceSet.count + currentWord.count) > 0) {  matrix = prevMatrix
+                        pieceSet = []
+                        while pieceSet.count < 9 {
+                            pieceSet.append(Logic.getNewCharacter())
+                        }
+                        currentWord = ""
+                        selectedAlphabet = ""
+                        reserveCount -= 1;
+                    }
                     
-                    // reset state
-                    print("Current word: \(currentWord)")
-                    score += GameConstants.calcWordScore(word: currentWord)
-                    prevMatrix = matrix
-                    currentWord = ""
-                    selectedAlphabet = ""
-                    
-                    
-                    // get new pieces
-                    if(pieceSet.count<9){
-                        print(pieceSet.count, 8-pieceSet.count)
-                        for n in 0...(8-pieceSet.count) {
-                            if(reserveCount > 0){
-                                pieceSet.append(GameConstants.getNewCharacter())
-                                reserveCount -= 1;
+                }){
+                Image(systemName: "arrow.clockwise")
+            }
+            .padding()
+            .background(Color(red: 0.9, green: 0.1, blue: 0.1))
+            .foregroundColor(.white)
+            .clipShape(Capsule())
+            
+            Button(
+                action: {
+                    if( currentWord.count > 2 && Words.checkIfWord(currentWord)){
+                        // reset state
+                        print("Current word: \(currentWord)")
+                        score += Logic.calcWordScore(word: currentWord)
+                        prevMatrix = matrix
+                        currentWord = ""
+                        selectedAlphabet = ""
+                        
+                        // get new pieces
+                        if(pieceSet.count<9){
+                            print(pieceSet.count, 8-pieceSet.count)
+                            for n in 0...(8-pieceSet.count) {
+                                if(reserveCount > 0){
+                                    pieceSet.append(Logic.getNewCharacter())
+                                    reserveCount -= 1;
+                                }
                             }
                         }
                     }
+                    else{
+                        // reseting since not a word
+                        print("Not a word!")
+                        matrix = prevMatrix
+                        for i in currentWord{
+                            pieceSet.append(String(i))
+                        }
+                        currentWord = ""
+                        selectedAlphabet = ""
+                    }
                 }){
-                Text("Submit")
+                Image(systemName: "play")
             }
             .padding()
             .background(Color(red: 0.1, green: 0.8, blue: 0.1))
