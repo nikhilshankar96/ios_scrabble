@@ -70,13 +70,20 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
-		154E93072639313600E8870A /* CoreLogic */ = {
+		1526A53E263C9E610097A06E /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				155CFAC626379FE60087A4AF /* GameState.swift */,
+				1554E1F4263A751400A14EBD /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		154E93072639313600E8870A /* CoreLogic */ = {
+			isa = PBXGroup;
+			children = (
 				154E93082639315700E8870A /* words.swift */,
 				1554E1EE2639F55300A14EBD /* Logic.swift */,
-				1554E1F4263A751400A14EBD /* User.swift */,
 			);
 			path = CoreLogic;
 			sourceTree = "<group>";
@@ -115,6 +122,7 @@
 		155D80C8263779EA003BF481 /* Scrabble */ = {
 			isa = PBXGroup;
 			children = (
+				1526A53E263C9E610097A06E /* Models */,
 				1526A535263B672E0097A06E /* Firebase */,
 				1526A532263B645F0097A06E /* GoogleService-Info.plist */,
 				1554E1EC2639E11F00A14EBD /* words_alpha.txt */,

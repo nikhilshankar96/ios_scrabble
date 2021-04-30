@@ -21,23 +21,32 @@ struct SignUpView : View {
     @EnvironmentObject var session: SessionStore
 
     func signUp () {
-        if(self.password == self.password2){
-            loading = true
-            error = false
-            session.signUp(email: email, password: password) { (result, error) in
-                self.loading = false
-                if error != nil {
-                    self.error = true
-                    toastText = "Unavailable!"
-                    showToast = true
-                } else {
-                    self.email = ""
-                    self.password = ""
+        
+        if User.isValidEmail(testStr: email) {
+           
+            if(self.password == self.password2){
+                loading = true
+                error = false
+                session.signUp(email: email, password: password) { (result, error) in
+                    self.loading = false
+                    if error != nil {
+                        self.error = true
+                        toastText = "Unavailable!"
+                        showToast = true
+                    } else {
+                        self.email = ""
+                        self.password = ""
+                    }
                 }
+            } else {
+                self.error = true
+                toastText = "Passwords dont match!"
+                showToast = true
             }
+        
         } else {
             self.error = true
-            toastText = "Passwords dont match!"
+            toastText = "Weird email!"
             showToast = true
         }
     }
