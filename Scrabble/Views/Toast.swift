@@ -54,5 +54,4 @@ extension View {
               presenting: { self },
               text: text)
     }
-
 }

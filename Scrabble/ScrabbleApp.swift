@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct ScrabbleApp: App {
+    @StateObject private var session = SessionStore()
+    init() {
+        FirebaseApp.configure()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            GameView()
+            MainView().environmentObject(SessionStore())
         }
     }
 }

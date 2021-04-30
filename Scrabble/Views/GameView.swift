@@ -37,6 +37,7 @@ struct GameView: View {
     @State var updatedCoords = [[Int]]()
     
     var body: some View {
+        
         VStack(alignment: .center, spacing: 15){
             Spacer();
             
@@ -94,36 +95,9 @@ struct GameView: View {
                     .background(selectedAlphabet == a ? Color.black : Color.white)
                 }
             }
-            
-            // currentWord
-            Text("'\(currentWord)'")
-                .underline()
-                .font(.system(size: 40, design: .monospaced))
-                .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .padding(2)
-                .foregroundColor(Color.black)
-                .background(Color.white);
-                
-            Spacer().frame(height: 20);
-            
             // Buttons
             HStack(spacing: 20){
-                
-                Button(
-                    action: {
-                        //action
-                        pieceSet.popLast()
-                        score += 1
-                        reserveCount += 1
-                    }){
-                    Image(systemName: "trash")
-                }
-                .padding()
-                .background(Color(red: 0.6, green: 0.6, blue: 0.6))
-                .foregroundColor(.white)
-                .clipShape(Capsule())
-                
-                
+    
                 Button(
                     action: {
                         //action
@@ -235,7 +209,11 @@ struct GameView: View {
                 .foregroundColor(.white)
                 .clipShape(Capsule())
             }
-        }.toast(isShowing: $showToast, text: Text(toastText))
+            Spacer();
+        }
+        .toast(isShowing: $showToast, text: Text(toastText))
+        .frame(maxWidth:.infinity,maxHeight: .infinity)
+        .background(Color.black).ignoresSafeArea(.all)
     }
     
     func postData(){
