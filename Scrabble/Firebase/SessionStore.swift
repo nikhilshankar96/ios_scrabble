@@ -9,12 +9,15 @@ import Foundation
 import SwiftUI
 import Firebase
 import Combine
+import CodableFirebase
 
 class SessionStore : ObservableObject {
+    
     var didChange = PassthroughSubject<SessionStore, Never>()
     @Published var session: User? {
         didSet {self.didChange.send(self)}
     }
+    
     var handle: AuthStateDidChangeListenerHandle?
     
     func listen () {
@@ -68,5 +71,23 @@ class SessionStore : ObservableObject {
     
     deinit {
         unbind()
+    }
+    
+    func updateGame(game: GameModel){
+        print("Game update:\n")
+        let docData = try! FirestoreEncoder().encode(game)
+        Firestore.firestore().collection("games").document(game.id).setData(docData) { error in
+            if let error = error {
+                print("Error writing document: \(error)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+    }
+    
+    func createNewGame(player: String, otherPlayer: String){
+        print("New game:\n")
+        var game = Logic.generateNewGame(player: player, otherPlayer: otherPlayer)
+        self.updateGame(game: game)
     }
 }

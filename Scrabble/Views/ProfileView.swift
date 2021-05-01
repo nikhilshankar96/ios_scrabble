@@ -11,7 +11,6 @@ struct ProfileView: View {
     @EnvironmentObject var session: SessionStore
     
     @State var error = false
-    
     @State var toastText = ""
     @State var showToast: Bool = false
     
@@ -25,15 +24,32 @@ struct ProfileView: View {
         }
     }
     
+    func temp(){
+        print("TEMP")
+        session.createNewGame(player: "7Ap17j8jd3SXILY84mPxKk3PnzZ2", otherPlayer: "LpNf77uamXfCW4LzxvGdW5vVAcS2")
+        print("TEMP /")
+
+    }
+    
     var body: some View {
-        VStack{
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .center){
+            Text("Hello \((session.session?.email)!)")
+            
             Button(action: signOut) {
                 Text("Sign out")
             }
             .frame(width: 100, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            .padding()
-            .background(Color(red: 0.3, green: 0.9, blue: 0.9))
+            .padding(30)
+            .background(Color(red: 0.8, green: 0.2, blue: 0.3))
+            .foregroundColor(.black)
+            .clipShape(Capsule())
+            
+            Button(action: temp) {
+                Text("TEMP")
+            }
+            .frame(width: 100, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .padding(30)
+            .background(Color(red: 0.2, green: 0.8, blue: 0.8))
             .foregroundColor(.black)
             .clipShape(Capsule())
         }

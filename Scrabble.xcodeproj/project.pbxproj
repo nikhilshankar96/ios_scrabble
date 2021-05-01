@@ -18,11 +18,14 @@
 		1554E1EF2639F55300A14EBD /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554E1EE2639F55300A14EBD /* Logic.swift */; };
 		1554E1F3263A043800A14EBD /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554E1F2263A043800A14EBD /* Toast.swift */; };
 		1554E1F5263A751400A14EBD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554E1F4263A751400A14EBD /* User.swift */; };
-		155CFAC726379FE60087A4AF /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155CFAC626379FE60087A4AF /* GameState.swift */; };
 		155D80CA263779EA003BF481 /* ScrabbleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155D80C9263779EA003BF481 /* ScrabbleApp.swift */; };
 		155D80CC263779EA003BF481 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155D80CB263779EA003BF481 /* GameView.swift */; };
 		155D80CE263779EC003BF481 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 155D80CD263779EC003BF481 /* Assets.xcassets */; };
 		155D80D1263779EC003BF481 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 155D80D0263779EC003BF481 /* Preview Assets.xcassets */; };
+		15B0EF89263D5F8400C1CF55 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0EF88263D5F8400C1CF55 /* GameModel.swift */; };
+		15B0EF8B263D5FB000C1CF55 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0EF8A263D5FB000C1CF55 /* UserModel.swift */; };
+		15B0EF8D263D606500C1CF55 /* GameListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0EF8C263D606500C1CF55 /* GameListViewModel.swift */; };
+		15B0EF8F263D609C00C1CF55 /* GameLIstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0EF8E263D609C00C1CF55 /* GameLIstView.swift */; };
 		1BEFFCA44F8DEFDFCF49382E /* Pods_Scrabble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A6A534909F2C9495FB4432 /* Pods_Scrabble.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,13 +41,16 @@
 		1554E1EE2639F55300A14EBD /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
 		1554E1F2263A043800A14EBD /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		1554E1F4263A751400A14EBD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		155CFAC626379FE60087A4AF /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		155D80C6263779EA003BF481 /* Scrabble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrabble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		155D80C9263779EA003BF481 /* ScrabbleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrabbleApp.swift; sourceTree = "<group>"; };
 		155D80CB263779EA003BF481 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		155D80CD263779EC003BF481 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		155D80D0263779EC003BF481 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		155D80D2263779EC003BF481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15B0EF88263D5F8400C1CF55 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		15B0EF8A263D5FB000C1CF55 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		15B0EF8C263D606500C1CF55 /* GameListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewModel.swift; sourceTree = "<group>"; };
+		15B0EF8E263D609C00C1CF55 /* GameLIstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLIstView.swift; sourceTree = "<group>"; };
 		42FFD2593C76059587261F56 /* Pods-Scrabble.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scrabble.debug.xcconfig"; path = "Target Support Files/Pods-Scrabble/Pods-Scrabble.debug.xcconfig"; sourceTree = "<group>"; };
 		A13B2A9C653B238293E661C0 /* Pods-Scrabble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scrabble.release.xcconfig"; path = "Target Support Files/Pods-Scrabble/Pods-Scrabble.release.xcconfig"; sourceTree = "<group>"; };
 		A4A6A534909F2C9495FB4432 /* Pods_Scrabble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scrabble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,8 +79,9 @@
 		1526A53E263C9E610097A06E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				155CFAC626379FE60087A4AF /* GameState.swift */,
 				1554E1F4263A751400A14EBD /* User.swift */,
+				15B0EF88263D5F8400C1CF55 /* GameModel.swift */,
+				15B0EF8A263D5FB000C1CF55 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -97,6 +104,8 @@
 				1526A538263B6C150097A06E /* SignInView.swift */,
 				1526A53A263B7C0A0097A06E /* SignUpView.swift */,
 				1526A53C263B84C70097A06E /* ProfileView.swift */,
+				15B0EF8C263D606500C1CF55 /* GameListViewModel.swift */,
+				15B0EF8E263D609C00C1CF55 /* GameLIstView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -276,17 +285,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				155CFAC726379FE60087A4AF /* GameState.swift in Sources */,
+				15B0EF8D263D606500C1CF55 /* GameListViewModel.swift in Sources */,
 				1526A531263B5EDE0097A06E /* MainView.swift in Sources */,
 				1554E1F3263A043800A14EBD /* Toast.swift in Sources */,
+				15B0EF8F263D609C00C1CF55 /* GameLIstView.swift in Sources */,
 				154E93092639315700E8870A /* words.swift in Sources */,
 				1526A53D263B84C70097A06E /* ProfileView.swift in Sources */,
 				1526A539263B6C150097A06E /* SignInView.swift in Sources */,
+				15B0EF8B263D5FB000C1CF55 /* UserModel.swift in Sources */,
 				1526A53B263B7C0A0097A06E /* SignUpView.swift in Sources */,
 				155D80CC263779EA003BF481 /* GameView.swift in Sources */,
 				1526A537263B673F0097A06E /* SessionStore.swift in Sources */,
 				1554E1EF2639F55300A14EBD /* Logic.swift in Sources */,
 				155D80CA263779EA003BF481 /* ScrabbleApp.swift in Sources */,
+				15B0EF89263D5F8400C1CF55 /* GameModel.swift in Sources */,
 				1554E1F5263A751400A14EBD /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct MainView: View {
-    @EnvironmentObject var session: SessionStore
     
+    @EnvironmentObject var session: SessionStore
+
     func getUser () {
          session.listen()
     }
@@ -17,16 +18,18 @@ struct MainView: View {
     var body: some View {
         Group {
             if (session.session != nil) {
-                TabView {
-                    GameView()
-                        .tabItem {
-                            Label("Game", systemImage: "gamecontroller.fill")
-                        }
+                TabView() {
                     ProfileView()
                         .tabItem {
                             Label("Profile", systemImage: "person.fill")
-                        }
-                }
+                        }.tag(0)
+                    
+                    GameListView()
+                        .tabItem {
+                            Label("Games", systemImage: "list.star")
+                        }.tag(1)
+                    
+                }.accentColor(Color(red: 0.2, green: 0.9, blue: 0.9))
             } else {
                 SignInView()
             }

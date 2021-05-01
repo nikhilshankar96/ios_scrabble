@@ -20,4 +20,3 @@ struct GameModel: Identifiable, Codable {
 //    GameModel(user1: "nikhil-shankar@outlook.com", user2: "nikhilshankarusa@gmail.com", turn: "nikhil-shankar@outlook.com", gameOver: false, boardHistory: []),
 //    GameModel(user1: "random@outlook.com", user2: "random@gmail.com", turn: "random@outlook.com", gameOver: false, boardHistory: [])
 //]
-

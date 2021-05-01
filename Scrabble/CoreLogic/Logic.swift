@@ -228,6 +228,20 @@ class Logic {
        
         return Words.checkIfWord(currentWord.lowercased()) && checkBoardValidity(board);
     }
+    
+    
+    static func generateNewGame(player: String, otherPlayer: String) -> GameModel {
+        
+        let uuid = UUID().uuidString
+        
+        var u1 = UserModel(id: player, score: 0, reserveCount: 10, pieceSet: Logic.getNewSet())
+        
+        var u2 = UserModel(id: otherPlayer, score: 0, reserveCount: 10, pieceSet: Logic.getNewSet())
+        
+        var game = GameModel(id: uuid, user1: u1, user2: u2, board: Logic.emptyBoard, turn: u1.id!, gameOver: false)
+        
+        return game
+    }
 }
 
 struct BoardLocator {

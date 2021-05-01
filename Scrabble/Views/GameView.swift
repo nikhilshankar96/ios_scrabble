@@ -12,14 +12,14 @@ let alphabet = Logic.alphabet
 
 
 struct GameView: View {
-    // live state?
+//     live state?
 //    @State var board = gameState.board
 //    @State var prevBoard = gameState.board
 //    @State var pieceSet = thisUser.pieceSet
 //    @State var isMyTurn = thisUser.isMyTurn
 //    @State var reserveCount = thisUser.reserveCount
 //    @State var score = thisUser.score
-//
+////
     @State var board = Logic.emptyBoard
     @State var prevBoard = Logic.emptyBoard
     @State var pieceSet = Logic.getNewSet()
