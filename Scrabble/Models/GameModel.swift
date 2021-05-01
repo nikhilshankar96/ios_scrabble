@@ -15,6 +15,12 @@ struct GameModel: Identifiable, Codable {
     var gameOver: Bool
 }
 
+class GameModelClass {
+    static var game: GameModel?
+    static var player: UserModel?
+    
+}
+
 
 //let testData = [
 //    GameModel(user1: "nikhil-shankar@outlook.com", user2: "nikhilshankarusa@gmail.com", turn: "nikhil-shankar@outlook.com", gameOver: false, boardHistory: []),

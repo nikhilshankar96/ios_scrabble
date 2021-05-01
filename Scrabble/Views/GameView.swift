@@ -10,22 +10,19 @@ import SwiftUI
 let gridSize = Logic.gridSize
 let alphabet = Logic.alphabet
 
-
 struct GameView: View {
-//     live state?
-//    @State var board = gameState.board
-//    @State var prevBoard = gameState.board
-//    @State var pieceSet = thisUser.pieceSet
-//    @State var isMyTurn = thisUser.isMyTurn
-//    @State var reserveCount = thisUser.reserveCount
-//    @State var score = thisUser.score
-////
-    @State var board = Logic.emptyBoard
-    @State var prevBoard = Logic.emptyBoard
-    @State var pieceSet = Logic.getNewSet()
-    @State var isMyTurn = false
-    @State var reserveCount = 10
-    @State var score = 0
+    @EnvironmentObject var session: SessionStore
+    
+    @State var board: [Int: [String]]
+    @State var prevBoard: [Int: [String]]
+    @State var pieceSet: [String]
+    @State var isMyTurn: Bool
+    @State var reserveCount: Int
+    @State var score: Int
+    
+    @State var game: GameModel
+    @State var player: UserModel
+    
     
     // local state
     @State var selectedAlphabet = ""
@@ -34,18 +31,31 @@ struct GameView: View {
     @State var showToast: Bool = false
     @State var updatedCoords = [[Int]]()
     
-    var body: some View {
+    
+    init(game: GameModel, player: UserModel) {
+        self.game = game
+        self.player = player
         
+        self.board = game.board
+        self.prevBoard = game.board
+        self.pieceSet = player.pieceSet!
+        self.isMyTurn = game.turn == player.id
+        self.reserveCount = player.reserveCount!
+        self.score = player.score!
+
+    }
+    
+    var body: some View {
         VStack(alignment: .center, spacing: 15){
             Spacer();
-            
+
             Text("Score: \(score)    [\(reserveCount ) left]")
                 .font(.system(size: 24, design: .monospaced))
                 .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .padding(2)
                 .foregroundColor(Color.blue)
                 .background(Color.white);
-        
+
             VStack(spacing: 1){
                 ForEach(0...(gridSize-1), id: \.self){ i in
                     HStack(spacing: 1){
@@ -58,7 +68,7 @@ struct GameView: View {
                                     print([i,j])
                                     board[i]![j] = selectedAlphabet // new move
                                     currentWord.append(selectedAlphabet)
-                                    
+
                                     for i in pieceSet.indices.reversed() where pieceSet[i] == selectedAlphabet {
                                         pieceSet.remove(at: i)
                                         break
@@ -66,7 +76,7 @@ struct GameView: View {
                                     selectedAlphabet = ""
                                     updatedCoords.append([i,j])
                                 }
-                            
+
                             }){
                             Text((board[i]?[j])!)
                         }
@@ -77,8 +87,8 @@ struct GameView: View {
             }
             .background(Color.black)
             .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
-            
-            
+        
+
             // Pieces
             HStack(spacing: 1){
                 ForEach(pieceSet, id: \.self){ a in
@@ -96,7 +106,7 @@ struct GameView: View {
             }
             // Buttons
             HStack(spacing: 20){
-    
+
                 Button(
                     action: {
                         //action
@@ -113,7 +123,7 @@ struct GameView: View {
                 .background(Color(red: 0.6, green: 0.6, blue: 0.6))
                 .foregroundColor(.white)
                 .clipShape(Capsule())
-                
+
                 Button(
                     action: {
                         //action
@@ -127,7 +137,7 @@ struct GameView: View {
                 .background(Color(red: 0.2, green: 0.8, blue: 0.8))
                 .foregroundColor(.white)
                 .clipShape(Capsule())
-                
+
                 Button(
                     action: {
                         //action
@@ -137,7 +147,7 @@ struct GameView: View {
                                 count += 1
                             }
                             pieceSet = []
-                            
+
                             while count > 0 {
                                 pieceSet.append(Logic.getNewCharacter())
                                 count -= 1
@@ -155,7 +165,7 @@ struct GameView: View {
                             selectedAlphabet = ""
                             reserveCount -= 1;
                         }
-                        
+
                     }){
                     Image(systemName: "arrow.clockwise")
                 }
@@ -163,10 +173,22 @@ struct GameView: View {
                 .background(Color(red: 0.9, green: 0.1, blue: 0.1))
                 .foregroundColor(.white)
                 .clipShape(Capsule())
-                
+
                 Button(
                     action: {
-                        if( currentWord.count > 1 &&
+                        if(!isMyTurn){
+                            print("Not your turn!")
+                            board = prevBoard
+                            for i in currentWord{
+                                pieceSet.append(String(i))
+                            }
+                            updatedCoords = []; // ###
+                            currentWord = ""
+                            selectedAlphabet = ""
+
+                            toastText = "Not your turn!"
+                            showToast = true
+                        } else if( currentWord.count > 1 &&
                             Logic.checkIfWordAndBoard(board: board, updatedCoords: updatedCoords) // ###
                         ){
                             // reset state
@@ -175,7 +197,7 @@ struct GameView: View {
                             prevBoard = board
                             currentWord = ""
                             selectedAlphabet = ""
-                            
+
                             // get new pieces
                             if(pieceSet.count<9){
                                 for n in 0...(8-pieceSet.count) {
@@ -185,6 +207,7 @@ struct GameView: View {
                                     }
                                 }
                             }
+                            submitMove()
                         }
                         else{
                             // reseting since not a word
@@ -196,7 +219,7 @@ struct GameView: View {
                             updatedCoords = []; // ###
                             currentWord = ""
                             selectedAlphabet = ""
-                            
+
                             toastText = "Not a word!"
                             showToast = true
                         }
@@ -215,16 +238,28 @@ struct GameView: View {
         .background(Color.black).ignoresSafeArea(.all)
     }
     
-    func postData(){
-        print(score,reserveCount)
+    func submitMove() {
+        print("submitting move...\n")
+        let sg = GameModel(
+            id: game.id,
+            user1: UserModel(
+                id: player.id, score: score, reserveCount: reserveCount, pieceSet: pieceSet),
+            user2: game.user2,
+            board: board,
+            turn: game.user1.id! == player.id ? game.user2.id! : game.user1.id!,
+            gameOver: false
+        )
+        
+        session.updateGame(game: sg)
+        isMyTurn = false
     }
 }
 
-struct GameView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameView()
-    }
-}
+//struct GameView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GameView()
+//    }
+//}
 
 struct CellStyle: ButtonStyle {
     let cellSize : CGFloat = 22.0;

@@ -57,7 +57,7 @@ struct SignInView : View {
                 VStack(spacing: 30){
                     TextField("Email", text: $email, onCommit: {
                         self.hideKeyboard()
-                    })
+                    }).autocapitalization(.none)
                         .font(.system(size: 16))
                         .padding(20)
                         .foregroundColor(.white)

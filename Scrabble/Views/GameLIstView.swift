@@ -12,19 +12,18 @@ struct GameListView: View {
     @EnvironmentObject var session: SessionStore
     
     var body: some View {
-      NavigationView {
+    VStack(alignment: .center, spacing: 15){
+        
+        NavigationView {
         List(viewModel.games) { game in
-            NavigationLink(destination: GameView()){
+            NavigationLink( destination: GameView(game: game, player: game.user1.id == session.session?.uid ? game.user1 : game.user2 )){
                 VStack(alignment: .leading) {
                 Text("\(game.id)")
                   .font(.headline)
-                Text("\( game.turn == session.session?.email ? "Your" : "\(game.turn)'s" ) turn")
+                Text("\( game.turn == session.session?.uid ? "Your" : "\(game.turn)'s" ) turn")
                   .font(.subheadline)
                 }
             }
-//            .simultaneousGesture(TapGesture().onEnded {
-//                print(game.id)
-//            })
         }
         .environmentObject(session)
         .navigationBarTitle("Your Games")
@@ -32,6 +31,10 @@ struct GameListView: View {
                 self.viewModel.fetchUserGameList(session: session)
         }
       }
+        
+    }
+    .frame(maxWidth:.infinity,maxHeight: .infinity)
+    .background(Color.black).ignoresSafeArea(.all)
     }
 }
 

@@ -43,6 +43,8 @@ class SessionStore : ObservableObject {
         handler: @escaping AuthDataResultCallback
         ) {
         Auth.auth().createUser(withEmail: email, password: password, completion: handler)
+        
+        Firestore.firestore().collection("users").document(email).setData(["games": []])
     }
 
     func signIn(
@@ -89,5 +91,78 @@ class SessionStore : ObservableObject {
         print("New game:\n")
         var game = Logic.generateNewGame(player: player, otherPlayer: otherPlayer)
         self.updateGame(game: game)
+        let db = Firestore.firestore()
+        
+        var p1List = [String]();
+        var p2List = [String]();
+        
+        p1List.append(game.id)
+        p2List.append(game.id)
+        
+        db.collection("users").document(player).getDocument{ documentSnapshot, error in
+            
+              guard let document = documentSnapshot else {
+                print("Error fetching document: \(error!)")
+                return
+              }
+              guard let data = document.data() else {
+                print("Document data was empty.")
+                return
+              }
+            p1List.append(contentsOf: data["games"] as! [String])
+               
+            }
+        
+        
+        db.collection("users").document(otherPlayer).getDocument{ documentSnapshot, error in
+            
+              guard let document = documentSnapshot else {
+                print("Error fetching document: \(error!)")
+                return
+              }
+              guard let data = document.data() else {
+                print("Document data was empty.")
+                return
+              }
+            p2List.append(contentsOf: data["games"] as! [String])
+            }
+        
+        
+        Firestore.firestore().collection("users").document(player).setData(["games": p1List]) { error in
+            if let error = error {
+                print("Error writing document: \(error)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+        
+        Firestore.firestore().collection("users").document(otherPlayer).setData(["games": p2List]) { error in
+            if let error = error {
+                print("Error writing document: \(error)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+        
+        print(p1List, p2List)
+        
+        
+    }
+    
+    func getAllUsers() -> [String]{
+        var list = [String]();
+        
+        Firestore.firestore().collection("users").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID)")
+                    list.append(document.documentID)
+                }
+            }
+        }
+        print(list)
+        return list
     }
 }
