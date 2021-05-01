@@ -41,10 +41,9 @@ class Game {
 
 struct GameState {
     var user1, user2: UserState
-    var board: [[String]]
+    var board: [Int: [String]]
     var whosTurn: Int
     var gameOver: Bool
-    var boardHistory: [[[Int]]];
 }
 
 struct UserState {

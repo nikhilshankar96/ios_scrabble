@@ -10,7 +10,24 @@ import Foundation
 class Logic {
     static let gridSize = 15;
     static let alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-    static let emptryBoard = Array(repeating: Array(repeating: " ",count: gridSize), count: gridSize)
+    static let emptryBoard = [
+        0: Array(repeating: " ",count: gridSize),
+        1: Array(repeating: " ",count: gridSize),
+        2: Array(repeating: " ",count: gridSize),
+        3: Array(repeating: " ",count: gridSize),
+        4: Array(repeating: " ",count: gridSize),
+        5: Array(repeating: " ",count: gridSize),
+        6: Array(repeating: " ",count: gridSize),
+        7: Array(repeating: " ",count: gridSize),
+        8: Array(repeating: " ",count: gridSize),
+        9: Array(repeating: " ",count: gridSize),
+        10: Array(repeating: " ",count: gridSize),
+        11: Array(repeating: " ",count: gridSize),
+        12: Array(repeating: " ",count: gridSize),
+        13: Array(repeating: " ",count: gridSize),
+        14: Array(repeating: " ",count: gridSize)
+    ]
+    
     static let scoreMap:[String:Int] = [
         "": 0,
         "A": 1,
@@ -52,7 +69,7 @@ class Logic {
     
     static func getNewCharacter() -> String{
         var charPool = [String]();
-        alphabet.map({ charPool.append(contentsOf: Array(repeating: $0,
+        alphabet.forEach({ charPool.append(contentsOf: Array(repeating: $0,
                     count:( 14 - scoreMap[$0]!)*(11 - scoreMap[$0]!)
         ) )})
         charPool.shuffle()
@@ -75,7 +92,7 @@ class Logic {
     
  
     
-    static func onlyOneUpdated(_ updated: [[Int]]) -> BoardLocator{
+    static func onlyOneUpdated(_ updated: [Int: [String]]) -> BoardLocator{
         var rFlag = true
         var cFlag = true
         let r = updated[0][0]
@@ -106,7 +123,7 @@ class Logic {
         
     }
     
-    static func isContiguous(_ grid: [[String]]) -> Bool {
+    static func isContiguous(_ grid: [Int: [String]]) -> Bool {
         var result = 0
         var notGrid = grid.map({ $0.map({ $0 == " " ? "0" : "1" }) })
         for row in 0..<grid.count {
@@ -120,7 +137,7 @@ class Logic {
         return result == 1
     }
     
-    static func checkIfWordAndBoard(board: [[String]], updatedCoords: [[Int]]) -> Bool{
+    static func checkIfWordAndBoard(board: [Int: [String]], updatedCoords: [[Int]]) -> Bool{
         let locator: BoardLocator = onlyOneUpdated(updatedCoords)
         if !(isContiguous(board) && locator.flag) {
             return false
@@ -151,7 +168,7 @@ class Logic {
         return Words.checkIfWord(currentWord.lowercased()) && checkBoardValidity(board);
     }
 
-    static func islandSearchDFS(_ grid: inout [[String]],_ row: Int, _ column: Int) {
+    static func islandSearchDFS(_ grid: inout [Int: [String]],_ row: Int, _ column: Int) {
         if row < 0 || row>=grid.count || column < 0 || column>=grid[row].count || grid[row][column] == "0" {
             return
         } // 1
@@ -163,17 +180,15 @@ class Logic {
         islandSearchDFS(&grid, row, column+1) //3
     }
     
-    static func checkBoardValidity(_ board: [[String]]) -> Bool{
+    static func checkBoardValidity(_ board: [Int: [String]]) -> Bool{
 //        print("Board validity check!")
         var flag = true
         for row in board {
-            var s = row.joined(separator: "").trimmingCharacters(in: .whitespaces)
+            let s = row.joined(separator: "").trimmingCharacters(in: .whitespaces)
             if(s == "" || s.count < 2){
                 continue
             }
-            print("->",s)
-            s.split(separator: " ").map({
-                print("word: \($0)")
+            s.split(separator: " ").forEach({
                 if $0.count > 1 {
                     if !Words.checkIfWord($0.lowercased()){
                     flag = false
@@ -187,12 +202,12 @@ class Logic {
         }
         
         for col in transpose(board) {
-            var s = col.joined(separator: "").trimmingCharacters(in: .whitespaces)
+            let s = col.joined(separator: "").trimmingCharacters(in: .whitespaces)
             if(s == "" || s.count < 2){
                 continue
             }
 //            print("->",s)
-            s.split(separator: " ").map({
+            s.split(separator: " ").forEach({
 //                print("word: \($0)")
                 if $0.count > 1 {
                     if !Words.checkIfWord($0.lowercased()){
@@ -206,15 +221,14 @@ class Logic {
         return flag
     }
     
-    static func transpose(_ input: [[String]]) -> [[String]] {
-        let columns = input.count
-        let rows = input.reduce(0) { max($0, $1.count) }
-
-        return (0 ..< rows).reduce(into: []) { result, row in
-            result.append((0 ..< columns).reduce(into: []) { result, column in
-                result.append(row < input[column].count ? input[column][row] : " ")
-            })
-        }
+    func transpose(_ input: [Int: [String]]) -> [Int: [String]] {
+     var result = emptryBoard;
+     for i in 0...14{
+         for j in 0...14{
+             result[j]?[i] = (input[i]?[j])!
+         }
+     }
+     return result
     }
 }
 

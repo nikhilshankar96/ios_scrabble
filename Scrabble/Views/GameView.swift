@@ -15,19 +15,19 @@ var thisUser = Game.getThisUserState()
 
 struct GameView: View {
     // live state?
-    @State var board = gameState.board
-    @State var prevBoard = gameState.board
-    @State var pieceSet = thisUser.pieceSet
-    @State var isMyTurn = thisUser.isMyTurn
-    @State var reserveCount = thisUser.reserveCount
-    @State var score = thisUser.score
+//    @State var board = gameState.board
+//    @State var prevBoard = gameState.board
+//    @State var pieceSet = thisUser.pieceSet
+//    @State var isMyTurn = thisUser.isMyTurn
+//    @State var reserveCount = thisUser.reserveCount
+//    @State var score = thisUser.score
     
-//    @State var board = Logic.emptryBoard
-//    @State var prevBoard = Logic.emptryBoard
-//    @State var pieceSet = Logic.getNewSet()
-//    @State var isMyTurn = false
-//    @State var reserveCount = 10
-//    @State var score = 0
+    @State var board = Logic.emptryBoard
+    @State var prevBoard = Logic.emptryBoard
+    @State var pieceSet = Logic.getNewSet()
+    @State var isMyTurn = false
+    @State var reserveCount = 10
+    @State var score = 0
     
     // local state
     @State var selectedAlphabet = ""
@@ -55,9 +55,9 @@ struct GameView: View {
                         Button(
                             action: {
                                 //action
-                                if(selectedAlphabet != "" && board[i][j] == " "){
+                                if(selectedAlphabet != "" && (board[i]?[j])! == " "){
                                     // check if new move is legit
-                                    board[i][j] = selectedAlphabet // new move
+                                    board[i]?[j] = selectedAlphabet // new move
                                     currentWord.append(selectedAlphabet)
                                     
                                     for i in pieceSet.indices.reversed() where pieceSet[i] == selectedAlphabet {
@@ -69,7 +69,7 @@ struct GameView: View {
                                 }
                             
                             }){
-                            Text(board[i][j])
+                            Text(board[i]?[j]!)
                         }
                         .buttonStyle(CellStyle())
                     }

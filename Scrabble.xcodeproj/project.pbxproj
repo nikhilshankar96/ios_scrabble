@@ -13,6 +13,10 @@
 		1526A539263B6C150097A06E /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1526A538263B6C150097A06E /* SignInView.swift */; };
 		1526A53B263B7C0A0097A06E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1526A53A263B7C0A0097A06E /* SignUpView.swift */; };
 		1526A53D263B84C70097A06E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1526A53C263B84C70097A06E /* ProfileView.swift */; };
+		1526A540263CA0BE0097A06E /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1526A53F263CA0BE0097A06E /* GameModel.swift */; };
+		1526A542263CA1DA0097A06E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1526A541263CA1DA0097A06E /* UserModel.swift */; };
+		1526A544263CA3B40097A06E /* GameLIstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1526A543263CA3B40097A06E /* GameLIstView.swift */; };
+		1526A547263CA7F80097A06E /* GameListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1526A546263CA7F80097A06E /* GameListViewModel.swift */; };
 		154E93092639315700E8870A /* words.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154E93082639315700E8870A /* words.swift */; };
 		1554E1ED2639E11F00A14EBD /* words_alpha.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1554E1EC2639E11F00A14EBD /* words_alpha.txt */; };
 		1554E1EF2639F55300A14EBD /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554E1EE2639F55300A14EBD /* Logic.swift */; };
@@ -33,6 +37,10 @@
 		1526A538263B6C150097A06E /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		1526A53A263B7C0A0097A06E /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		1526A53C263B84C70097A06E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		1526A53F263CA0BE0097A06E /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		1526A541263CA1DA0097A06E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		1526A543263CA3B40097A06E /* GameLIstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLIstView.swift; sourceTree = "<group>"; };
+		1526A546263CA7F80097A06E /* GameListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewModel.swift; sourceTree = "<group>"; };
 		154E93082639315700E8870A /* words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = words.swift; sourceTree = "<group>"; };
 		1554E1EC2639E11F00A14EBD /* words_alpha.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words_alpha.txt; sourceTree = "<group>"; };
 		1554E1EE2639F55300A14EBD /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
@@ -75,8 +83,18 @@
 			children = (
 				155CFAC626379FE60087A4AF /* GameState.swift */,
 				1554E1F4263A751400A14EBD /* User.swift */,
+				1526A53F263CA0BE0097A06E /* GameModel.swift */,
+				1526A541263CA1DA0097A06E /* UserModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1526A545263CA7E70097A06E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1526A546263CA7F80097A06E /* GameListViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		154E93072639313600E8870A /* CoreLogic */ = {
@@ -97,6 +115,7 @@
 				1526A538263B6C150097A06E /* SignInView.swift */,
 				1526A53A263B7C0A0097A06E /* SignUpView.swift */,
 				1526A53C263B84C70097A06E /* ProfileView.swift */,
+				1526A543263CA3B40097A06E /* GameLIstView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -122,6 +141,7 @@
 		155D80C8263779EA003BF481 /* Scrabble */ = {
 			isa = PBXGroup;
 			children = (
+				1526A545263CA7E70097A06E /* ViewModel */,
 				1526A53E263C9E610097A06E /* Models */,
 				1526A535263B672E0097A06E /* Firebase */,
 				1526A532263B645F0097A06E /* GoogleService-Info.plist */,
@@ -279,14 +299,18 @@
 				155CFAC726379FE60087A4AF /* GameState.swift in Sources */,
 				1526A531263B5EDE0097A06E /* MainView.swift in Sources */,
 				1554E1F3263A043800A14EBD /* Toast.swift in Sources */,
+				1526A544263CA3B40097A06E /* GameLIstView.swift in Sources */,
+				1526A547263CA7F80097A06E /* GameListViewModel.swift in Sources */,
 				154E93092639315700E8870A /* words.swift in Sources */,
 				1526A53D263B84C70097A06E /* ProfileView.swift in Sources */,
 				1526A539263B6C150097A06E /* SignInView.swift in Sources */,
 				1526A53B263B7C0A0097A06E /* SignUpView.swift in Sources */,
 				155D80CC263779EA003BF481 /* GameView.swift in Sources */,
+				1526A542263CA1DA0097A06E /* UserModel.swift in Sources */,
 				1526A537263B673F0097A06E /* SessionStore.swift in Sources */,
 				1554E1EF2639F55300A14EBD /* Logic.swift in Sources */,
 				155D80CA263779EA003BF481 /* ScrabbleApp.swift in Sources */,
+				1526A540263CA0BE0097A06E /* GameModel.swift in Sources */,
 				1554E1F5263A751400A14EBD /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,7 +369,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -400,7 +424,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
