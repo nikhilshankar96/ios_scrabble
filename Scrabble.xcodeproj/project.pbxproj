@@ -23,7 +23,7 @@
 		155D80CC263779EA003BF481 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155D80CB263779EA003BF481 /* GameView.swift */; };
 		155D80CE263779EC003BF481 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 155D80CD263779EC003BF481 /* Assets.xcassets */; };
 		155D80D1263779EC003BF481 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 155D80D0263779EC003BF481 /* Preview Assets.xcassets */; };
-		D99064A444D9C50E8A3533CC /* Pods_Scrabble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA9A95F6059F84D372E828EE /* Pods_Scrabble.framework */; };
+		1BEFFCA44F8DEFDFCF49382E /* Pods_Scrabble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A6A534909F2C9495FB4432 /* Pods_Scrabble.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,9 +45,9 @@
 		155D80CD263779EC003BF481 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		155D80D0263779EC003BF481 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		155D80D2263779EC003BF481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4C10FC493C4BA535F2434FE0 /* Pods-Scrabble.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scrabble.debug.xcconfig"; path = "Target Support Files/Pods-Scrabble/Pods-Scrabble.debug.xcconfig"; sourceTree = "<group>"; };
-		CA9A95F6059F84D372E828EE /* Pods_Scrabble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scrabble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FE30382608D713C7B9E1B4F3 /* Pods-Scrabble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scrabble.release.xcconfig"; path = "Target Support Files/Pods-Scrabble/Pods-Scrabble.release.xcconfig"; sourceTree = "<group>"; };
+		42FFD2593C76059587261F56 /* Pods-Scrabble.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scrabble.debug.xcconfig"; path = "Target Support Files/Pods-Scrabble/Pods-Scrabble.debug.xcconfig"; sourceTree = "<group>"; };
+		A13B2A9C653B238293E661C0 /* Pods-Scrabble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scrabble.release.xcconfig"; path = "Target Support Files/Pods-Scrabble/Pods-Scrabble.release.xcconfig"; sourceTree = "<group>"; };
+		A4A6A534909F2C9495FB4432 /* Pods_Scrabble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scrabble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D99064A444D9C50E8A3533CC /* Pods_Scrabble.framework in Frameworks */,
+				1BEFFCA44F8DEFDFCF49382E /* Pods_Scrabble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +107,7 @@
 				155D80C8263779EA003BF481 /* Scrabble */,
 				155D80C7263779EA003BF481 /* Products */,
 				D490CA60BC0DF675BC0C1DFE /* Pods */,
-				E96CA36B5D0DCEC9DE69B01C /* Frameworks */,
+				A3BB917505B187E15228F2F7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,21 +144,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		A3BB917505B187E15228F2F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4A6A534909F2C9495FB4432 /* Pods_Scrabble.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D490CA60BC0DF675BC0C1DFE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4C10FC493C4BA535F2434FE0 /* Pods-Scrabble.debug.xcconfig */,
-				FE30382608D713C7B9E1B4F3 /* Pods-Scrabble.release.xcconfig */,
+				42FFD2593C76059587261F56 /* Pods-Scrabble.debug.xcconfig */,
+				A13B2A9C653B238293E661C0 /* Pods-Scrabble.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		E96CA36B5D0DCEC9DE69B01C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				CA9A95F6059F84D372E828EE /* Pods_Scrabble.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,11 +168,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 155D80D5263779EC003BF481 /* Build configuration list for PBXNativeTarget "Scrabble" */;
 			buildPhases = (
-				5D35E93C4ED55FB98D992872 /* [CP] Check Pods Manifest.lock */,
+				0AA810DBED70BF4AE485E27B /* [CP] Check Pods Manifest.lock */,
 				155D80C2263779EA003BF481 /* Sources */,
 				155D80C3263779EA003BF481 /* Frameworks */,
 				155D80C4263779EA003BF481 /* Resources */,
-				9D8372B49F7101F38A23431E /* [CP] Embed Pods Frameworks */,
+				2A3049A827C081F241E23839 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -230,7 +230,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5D35E93C4ED55FB98D992872 /* [CP] Check Pods Manifest.lock */ = {
+		0AA810DBED70BF4AE485E27B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -252,7 +252,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9D8372B49F7101F38A23431E /* [CP] Embed Pods Frameworks */ = {
+		2A3049A827C081F241E23839 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -412,7 +412,7 @@
 		};
 		155D80D6263779EC003BF481 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C10FC493C4BA535F2434FE0 /* Pods-Scrabble.debug.xcconfig */;
+			baseConfigurationReference = 42FFD2593C76059587261F56 /* Pods-Scrabble.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -435,7 +435,7 @@
 		};
 		155D80D7263779EC003BF481 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FE30382608D713C7B9E1B4F3 /* Pods-Scrabble.release.xcconfig */;
+			baseConfigurationReference = A13B2A9C653B238293E661C0 /* Pods-Scrabble.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
